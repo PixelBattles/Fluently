@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelBattles.Fluently", "src\PixelBattles.Fluently\PixelBattles.Fluently.csproj", "{3423993A-01D3-44E3-9BCB-31C143BEFB42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PixelBattles.Fluently", "src\PixelBattles.Fluently\PixelBattles.Fluently.csproj", "{3423993A-01D3-44E3-9BCB-31C143BEFB42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8C6D8426-CB4F-4C04-9FB7-EDC605B73154}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PixelBattles.Fluently.Samples", "src\PixelBattles.Fluently.Samples\PixelBattles.Fluently.Samples.csproj", "{A0B31BE2-CA8D-4589-BB05-354D36F1FB66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,17 @@ Global
 		{3423993A-01D3-44E3-9BCB-31C143BEFB42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3423993A-01D3-44E3-9BCB-31C143BEFB42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3423993A-01D3-44E3-9BCB-31C143BEFB42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0B31BE2-CA8D-4589-BB05-354D36F1FB66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0B31BE2-CA8D-4589-BB05-354D36F1FB66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0B31BE2-CA8D-4589-BB05-354D36F1FB66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0B31BE2-CA8D-4589-BB05-354D36F1FB66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3423993A-01D3-44E3-9BCB-31C143BEFB42} = {8C6D8426-CB4F-4C04-9FB7-EDC605B73154}
+		{A0B31BE2-CA8D-4589-BB05-354D36F1FB66} = {8C6D8426-CB4F-4C04-9FB7-EDC605B73154}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E34EA652-8A22-458A-8AD4-985C0A80AFCB}
