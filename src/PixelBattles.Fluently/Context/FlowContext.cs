@@ -24,6 +24,12 @@ namespace PixelBattles.Fluently.Context
             throw new NotImplementedException();
         }
 
+        public IValueContext<TValue> Get<TValue>()
+        {
+            string key = typeof(TValue).Name;
+            return Get<TValue>(key);
+        }
+
         public IFlowContext Set<TValue>(string key, TValue value)
         {
             values[key] = value;

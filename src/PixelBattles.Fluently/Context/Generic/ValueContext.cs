@@ -40,12 +40,40 @@ namespace PixelBattles.Fluently.Context.Generic
 
         public IValueContext<TAnotherValue> Transform<TAnotherValue>(Func<TValue, TAnotherValue> transformator)
         {
-            throw new NotImplementedException();
+            return new ValueContext<TAnotherValue>(flowContext, transformator(Value));
         }
 
         public IValueContext<TAnotherValue> Transform<TAnotherValue>(Func<IFlowContext, TValue, TAnotherValue> transformator)
         {
             throw new NotImplementedException();
+        }
+
+        IValueContext<TValue> IValueContext<TValue>.Save(string destination)
+        {
+            Destination = destination;
+            flowContext.Set(Destination, Value);
+            return this;
+        }
+
+        public IFlowContext Continue()
+        {
+            return flowContext;
+        }
+
+        public IValueContext<TValue> With(Action<TValue> action)
+        {
+            action(Value);
+            return this;
+        }
+
+        IValueContext<TValue> IValueContext<TValue>.Save()
+        {
+            if (String.IsNullOrWhiteSpace(Destination))
+            {
+                Destination = typeof(TValue).Name;
+            }
+            flowContext.Set(Destination, Value);
+            return this;
         }
     }
 }

@@ -7,6 +7,7 @@ namespace PixelBattles.Fluently.Context.Generic
     public interface IValueContext<TValue>
     {
         TValue Value { get; set; }
+        IValueContext<TValue> Save();
         IValueContext<TValue> Save(string destination);
         IFlowContext Continue();
         IValueContext<TAnotherValue> As<TAnotherValue>();
