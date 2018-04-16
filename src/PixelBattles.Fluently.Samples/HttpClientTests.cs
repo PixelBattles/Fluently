@@ -9,7 +9,7 @@ namespace PixelBattles.Fluently.Samples
     {
         public HttpClientTests()
         {
-            FlowContext
+            Context
                 .Setup(new HttpClient())
                 .With(c => c.BaseAddress = new Uri("http://example.com/"))
                 .With(c => c.Timeout = TimeSpan.FromSeconds(30))
@@ -20,7 +20,7 @@ namespace PixelBattles.Fluently.Samples
         [Fact]
         public void HttpGetRequest_To_ExampleCom_Return_OK()
         {
-            FlowContext
+            Context
                 .Get<HttpClient>()
                 .Transform(client => client.GetAsync(String.Empty).Result)
                 .Save()
@@ -32,7 +32,7 @@ namespace PixelBattles.Fluently.Samples
         [Fact]
         public void HttpPostRequest_To_ExampleCom_Return_OK()
         {
-            FlowContext
+            Context
                 .Get<HttpClient>()
                 .Transform(client => client.PostAsync(String.Empty, new StringContent("test")).Result)
                 .Save()

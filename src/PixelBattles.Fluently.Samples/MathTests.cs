@@ -8,7 +8,7 @@ namespace PixelBattles.Fluently.Samples
         [Fact]
         public void Multiply_Is_Working()
         {
-            FlowContext
+            Context
                 .Setup(1).Save("left operand").Continue()
                 .Setup(2).Save("right operand").Continue()
                 .Setup(context => context.Get<int>("left operand").Value * context.Get<int>("right operand").Value).Save("result").Continue()
@@ -18,7 +18,7 @@ namespace PixelBattles.Fluently.Samples
         [Fact]
         public void Division_Is_Working()
         {
-            FlowContext
+            Context
                 .Setup(8).Save("left operand").Continue()
                 .Setup(2).Save("right operand").Continue()
                 .Setup(context => context.Get<int>("left operand").Value / context.Get<int>("right operand").Value).Save("result").Continue()
