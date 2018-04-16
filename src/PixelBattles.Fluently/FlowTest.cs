@@ -1,8 +1,5 @@
 ﻿using PixelBattles.Fluently.Context;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
 
 namespace PixelBattles.Fluently
 {
@@ -18,9 +15,5 @@ namespace PixelBattles.Fluently
         public void Dispose()
         {
         }
-
-        //[Theory]
-        //[MemberData(nameof(FlowContextFactory.CreateFlowContext), MemberType = typeof(FlowContextFactory))]
-        //public abstract IFlowContext Run(IFlowContext context);
     }
 }

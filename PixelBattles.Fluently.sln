@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.2005
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PixelBattles.Fluently", "src\PixelBattles.Fluently\PixelBattles.Fluently.csproj", "{3423993A-01D3-44E3-9BCB-31C143BEFB42}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8C6D8426-CB4F-4C04-9FB7-EDC605B73154}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelBattles.Fluently.Samples", "src\PixelBattles.Fluently.Samples\PixelBattles.Fluently.Samples.csproj", "{90401FD3-A238-4E90-919E-CBC56A2B8764}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PixelBattles.Fluently.Samples", "src\PixelBattles.Fluently.Samples\PixelBattles.Fluently.Samples.csproj", "{90401FD3-A238-4E90-919E-CBC56A2B8764}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
