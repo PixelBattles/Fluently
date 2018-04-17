@@ -5,7 +5,12 @@ namespace PixelBattles.Fluently.Context
 {
     public class FlowContext : IFlowContext
     {
-        protected Dictionary<string, object> values = new Dictionary<string, object>();
+        protected Dictionary<string, object> Values;
+
+        public FlowContext()
+        {
+            Values = new Dictionary<string, object>();
+        }
 
         public IAssertContext Assert()
         {
@@ -14,7 +19,7 @@ namespace PixelBattles.Fluently.Context
 
         public IValueContext<TValue> Get<TValue>(string key)
         {
-            return new ValueContext<TValue>(this, (TValue)values[key]);
+            return new ValueContext<TValue>(this, (TValue)Values[key]);
         }
         
         public IValueContext<TValue> Get<TValue>()
@@ -25,24 +30,23 @@ namespace PixelBattles.Fluently.Context
 
         public IFlowContext Set<TValue>(string key, TValue value)
         {
-            values[key] = value;
+            Values[key] = value;
             return this;
         }
 
-        public IFlowContext Set(string key, object value)
+        public IFlowContext Set<TValue>(TValue value)
         {
-            values[key] = value;
-            return this;
+            return Set(typeof(TValue).Name, value);
         }
-        
+
         public IValueContext<TValue> Setup<TValue>(Func<TValue> generator)
         {
-            throw new NotImplementedException();
+            return Setup(generator());
         }
 
         public IValueContext<TValue> Setup<TValue>(Func<IFlowContext, TValue> generator)
         {
-            return new ValueContext<TValue>(this, generator(this));
+            return Setup(generator(this));
         }
         
         public IValueContext<TValue> Setup<TValue>(TValue value)

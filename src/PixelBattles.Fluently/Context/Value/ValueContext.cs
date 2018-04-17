@@ -7,7 +7,7 @@ namespace PixelBattles.Fluently.Context
         public ValueContext(IFlowContext flowContext, TValue value)
         {
             this.Value = value;
-            this.flowContext = flowContext;
+            this.FlowContext = flowContext;
         }
 
         public ValueContext(IFlowContext flowContext, TValue value, string destination) : this(flowContext, value)
@@ -15,47 +15,42 @@ namespace PixelBattles.Fluently.Context
             this.Destination = destination;
         }
 
-        private IFlowContext flowContext;
+        protected IFlowContext FlowContext;
 
         public TValue Value { get; set; }
+
+        protected string Destination { get; set; }
+
+        public IValueContext<TValue> Save()
+        {
+            if (String.IsNullOrEmpty(Destination))
+            {
+                Destination = typeof(TValue).Name;
+            }
+
+            FlowContext.Set(Destination, Value);
+            return this;
+        }
+
+        public IValueContext<TValue> Save(string destination)
+        {
+            Destination = destination;
+            return Save();
+        }
         
-        public string Destination { get; set; }
-
-        public IFlowContext Save()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IFlowContext Save(string destination)
-        {
-            return flowContext.Set(destination, Value);
-        }
-
-        public IValueContext<TAnotherValue> As<TAnotherValue>()
-        {
-            throw new NotImplementedException();
-        }
-
         public IValueContext<TAnotherValue> Select<TAnotherValue>(Func<TValue, TAnotherValue> transformator)
         {
-            return new ValueContext<TAnotherValue>(flowContext, transformator(Value));
+            return new ValueContext<TAnotherValue>(FlowContext, transformator(Value));
         }
 
         public IValueContext<TAnotherValue> Select<TAnotherValue>(Func<IFlowContext, TValue, TAnotherValue> transformator)
         {
-            throw new NotImplementedException();
+            return new ValueContext<TAnotherValue>(FlowContext, transformator(FlowContext, Value));
         }
-
-        IValueContext<TValue> IValueContext<TValue>.Save(string destination)
-        {
-            Destination = destination;
-            flowContext.Set(Destination, Value);
-            return this;
-        }
-
+        
         public IFlowContext Continue()
         {
-            return flowContext;
+            return FlowContext;
         }
 
         public IValueContext<TValue> With(Action<TValue> action)
@@ -63,17 +58,7 @@ namespace PixelBattles.Fluently.Context
             action(Value);
             return this;
         }
-
-        IValueContext<TValue> IValueContext<TValue>.Save()
-        {
-            if (String.IsNullOrWhiteSpace(Destination))
-            {
-                Destination = typeof(TValue).Name;
-            }
-            flowContext.Set(Destination, Value);
-            return this;
-        }
-
+        
         public IValueAssertContext<TValue> Assert()
         {
             return new ValueAssertContext<TValue>(this);

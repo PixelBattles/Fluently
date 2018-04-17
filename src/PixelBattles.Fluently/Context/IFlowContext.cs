@@ -10,7 +10,7 @@ namespace PixelBattles.Fluently.Context
         
         IFlowContext Set<TValue>(string key, TValue value);
 
-        IFlowContext Set(string key, object value);
+        IFlowContext Set<TValue>(TValue value);
 
         IValueContext<TValue> Setup<TValue>(Func<TValue> generator);
 
