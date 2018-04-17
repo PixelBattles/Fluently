@@ -22,7 +22,7 @@ namespace PixelBattles.Fluently.Samples
         {
             Context
                 .Get<HttpClient>()
-                .Transform(client => client.GetAsync(String.Empty).Result)
+                .Select(client => client.GetAsync(String.Empty).Result)
                 .Save()
                 .Continue()
                 .Assert().Equals(c => c.Get<HttpResponseMessage>().Value.IsSuccessStatusCode, true)
@@ -34,7 +34,7 @@ namespace PixelBattles.Fluently.Samples
         {
             Context
                 .Get<HttpClient>()
-                .Transform(client => client.PostAsync(String.Empty, new StringContent("test")).Result)
+                .Select(client => client.PostAsync(String.Empty, new StringContent("test")).Result)
                 .Save()
                 .Continue()
                 .Assert().Equals(c => c.Get<HttpResponseMessage>().Value.IsSuccessStatusCode, true)

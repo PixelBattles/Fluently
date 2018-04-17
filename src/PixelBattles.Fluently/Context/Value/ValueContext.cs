@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace PixelBattles.Fluently.Context.Generic
+namespace PixelBattles.Fluently.Context
 {
     public class ValueContext<TValue> : IValueContext<TValue>
     {
@@ -38,12 +36,12 @@ namespace PixelBattles.Fluently.Context.Generic
             throw new NotImplementedException();
         }
 
-        public IValueContext<TAnotherValue> Transform<TAnotherValue>(Func<TValue, TAnotherValue> transformator)
+        public IValueContext<TAnotherValue> Select<TAnotherValue>(Func<TValue, TAnotherValue> transformator)
         {
             return new ValueContext<TAnotherValue>(flowContext, transformator(Value));
         }
 
-        public IValueContext<TAnotherValue> Transform<TAnotherValue>(Func<IFlowContext, TValue, TAnotherValue> transformator)
+        public IValueContext<TAnotherValue> Select<TAnotherValue>(Func<IFlowContext, TValue, TAnotherValue> transformator)
         {
             throw new NotImplementedException();
         }
@@ -74,6 +72,11 @@ namespace PixelBattles.Fluently.Context.Generic
             }
             flowContext.Set(Destination, Value);
             return this;
+        }
+
+        public IValueAssertContext<TValue> Assert()
+        {
+            return new ValueAssertContext<TValue>(this);
         }
     }
 }

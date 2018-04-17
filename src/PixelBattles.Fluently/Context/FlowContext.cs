@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using PixelBattles.Fluently.Context.Generic;
 
 namespace PixelBattles.Fluently.Context
 {
@@ -18,12 +16,7 @@ namespace PixelBattles.Fluently.Context
         {
             return new ValueContext<TValue>(this, (TValue)values[key]);
         }
-
-        public IValueContext Get(string key)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public IValueContext<TValue> Get<TValue>()
         {
             string key = typeof(TValue).Name;
@@ -41,17 +34,7 @@ namespace PixelBattles.Fluently.Context
             values[key] = value;
             return this;
         }
-
-        public IValueContext Setup(Func<object> generator)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IValueContext Setup(Func<IFlowContext, object> generator)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public IValueContext<TValue> Setup<TValue>(Func<TValue> generator)
         {
             throw new NotImplementedException();
@@ -61,12 +44,7 @@ namespace PixelBattles.Fluently.Context
         {
             return new ValueContext<TValue>(this, generator(this));
         }
-
-        public IValueContext Setup(object value)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public IValueContext<TValue> Setup<TValue>(TValue value)
         {
             return new ValueContext<TValue>(this, value);
