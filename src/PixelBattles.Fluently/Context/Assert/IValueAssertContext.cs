@@ -1,10 +1,17 @@
 ﻿using System;
+using System.Collections;
 
 namespace PixelBattles.Fluently.Context
 {
     public interface IValueAssertContext<TValue>
     {
         IValueAssertContext<TValue> NotNull();
+
+        IValueAssertContext<TValue> NotNull<TAnotherValue>(Func<TValue, TAnotherValue> transformator);
+
+        IValueAssertContext<TValue> Empty(Func<TValue, IEnumerable> transformator);
+
+        IValueAssertContext<TValue> NotEmpty(Func<TValue, IEnumerable> transformator);
 
         IValueAssertContext<TValue> Equals(TValue expected);
 

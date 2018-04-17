@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Xunit;
 
 namespace PixelBattles.Fluently.Context
@@ -57,6 +58,24 @@ namespace PixelBattles.Fluently.Context
         public IValueContext<TValue> Continue()
         {
             return valueContext;
+        }
+
+        public IValueAssertContext<TValue> NotNull<TAnotherValue>(Func<TValue, TAnotherValue> transformator)
+        {
+            Assert.NotNull(transformator(valueContext.Value));
+            return this;
+        }
+
+        public IValueAssertContext<TValue> Empty(Func<TValue, IEnumerable> transformator)
+        {
+            Assert.Empty(transformator(valueContext.Value));
+            return this;
+        }
+
+        public IValueAssertContext<TValue> NotEmpty(Func<TValue, IEnumerable> transformator)
+        {
+            Assert.NotEmpty(transformator(valueContext.Value));
+            return this;
         }
     }
 }
